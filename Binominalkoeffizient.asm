@@ -1,15 +1,12 @@
-#Binominalkoeffizient berechnen (n über k
+#Binominalkoeffizient berechnen (n Ã¼ber k
 #
-# !!! Der größtmögliche Eingabewert ist 12! da alles andere 32bit Speicherstellen übersteigt !!!
-#
-#Fließkomma Operationen wurden ignoriert da bei Auswahlverfahren nur gerade Werte herauskommen können.
-#Negative Eingaben wurden auch nicht beachtet, da es keine negativen Mengen geben kann (Man kann nicht -2 Stühle besitzen?)
+# !!! Der grÃ¶ÃŸtmÃ¶gliche Eingabewert ist 12! da alles andere 32bit Speicherstellen Ã¼bersteigt !!!
 
 .data
 	promptMsgN:	.asciiz	"N eingeben: "
 	promptMsgK:	.asciiz	"\nK eingeben: "
 	promptSpce:	.asciiz	"\n---------------------------"
-	resultMsg:	.asciiz	"\nErgebnis N über K: "
+	resultMsg:	.asciiz	"\nErgebnis N Ã¼ber K: "
 	
 .text 
 	main:
@@ -27,17 +24,17 @@
 	syscall
 	move	$s1,	$v0				#$s1 = K
 
-	#Abfrage Sonderfall 0 über 0 = 1
+	#Abfrage Sonderfall 0 Ã¼ber 0 = 1
 	li		$s7,	1
 	bnez	$s0,	Rechnen
 	beqz	$s1,	ErgebnisDarstellen
 	
 	
 	Rechnen:	 
-	#Zähler
+	#ZÃ¤hler
 	move	$a0,	$s0
 	jal		factStart
-	move	$s2,	$a0				#$s2 = Zähler
+	move	$s2,	$a0				#$s2 = ZÃ¤hler
 	
 	#Nenner Teil 1
 	sub		$s3,	$s0,	$s1		#$s3 = n-k
